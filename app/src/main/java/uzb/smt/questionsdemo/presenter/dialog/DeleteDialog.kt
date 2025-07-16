@@ -6,7 +6,8 @@ import uzb.smt.questionsdemo.domen.model.QuestionData
 
 class DeleteDialog(
     private val context: Context,
-    private val listener: (QuestionData) -> Unit
+    private val listener: (QuestionData) -> Unit,
+    private val dismiss: () -> Unit
 ) {
     private var dialog: AlertDialog? = null
 
@@ -14,7 +15,11 @@ class DeleteDialog(
         dialog = AlertDialog.Builder(context)
             .setTitle("O‘chirish")
             .setMessage(message)
+            .setOnDismissListener {
+                dismiss()
+            }
             .setNegativeButton("Yo‘q") { dialogInterface, _ ->
+                dismiss()
                 dialogInterface.dismiss()
             }
             .setPositiveButton("Ha") { dialogInterface, _ ->
@@ -29,7 +34,4 @@ class DeleteDialog(
         dialog?.show()
     }
 
-    fun dismiss() {
-        dialog?.dismiss()
-    }
 }

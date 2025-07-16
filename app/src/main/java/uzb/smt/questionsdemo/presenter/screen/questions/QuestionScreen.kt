@@ -61,7 +61,9 @@ class QuestionScreen : Fragment() {
         )
         dialog = DeleteDialog(context = requireContext(), listener = {
             viewModel.deleteQuestion(it)
-        })
+        }) {
+            viewModel.dismissDelete()
+        }
         binding.rv.adapter = adapter
     }
 
@@ -80,7 +82,9 @@ class QuestionScreen : Fragment() {
 
         lifecycleScope.launchWhenStarted {
             viewModel.deleteQuestion.collectLatest { item ->
+                if (item != null) {
                 dialog.show("Siz rostan ham o`chirmoqchimisiz?", item)
+                }
             }
         }
 

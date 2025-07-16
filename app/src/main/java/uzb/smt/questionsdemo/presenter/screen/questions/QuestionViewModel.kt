@@ -29,8 +29,8 @@ class QuestionViewModel @Inject constructor(
     val questions = _questions.asStateFlow()
     private val _isActive = MutableStateFlow<Boolean>(false)
     val isActive = _isActive.asStateFlow()
-    private val _deleteQuestion = MutableSharedFlow<QuestionData>()
-    val deleteQuestion = _deleteQuestion.asSharedFlow()
+    private val _deleteQuestion = MutableStateFlow<QuestionData?>(null)
+    val deleteQuestion = _deleteQuestion.asStateFlow()
 
     private val _errorMessage = MutableSharedFlow<String>()
     val errorMessage = _errorMessage.asSharedFlow()
@@ -69,6 +69,7 @@ class QuestionViewModel @Inject constructor(
             deleteQuestions(deleteData).collectLatest { result ->
                 when (result) {
                     is ResponseData.Success -> {
+                        _deleteQuestion.value = null
                         val ls = _questions.value.toMutableList()
                         ls.remove(deleteData)
                         _questions.value = ls
@@ -81,10 +82,15 @@ class QuestionViewModel @Inject constructor(
             }
         }
     }
+    fun dismissDelete() {
+        _deleteQuestion.value = null
+    }
 
     fun openDeleteQuestion(daletItem: QuestionData) {
         viewModelScope.launch {
+            if (_deleteQuestion.value == null) {
             _deleteQuestion.emit(daletItem)
+        }
         }
     }
 
