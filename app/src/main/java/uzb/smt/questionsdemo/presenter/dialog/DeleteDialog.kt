@@ -15,9 +15,6 @@ class DeleteDialog(
         dialog = AlertDialog.Builder(context)
             .setTitle("O‘chirish")
             .setMessage(message)
-            .setOnDismissListener {
-                dismiss()
-            }
             .setNegativeButton("Yo‘q") { dialogInterface, _ ->
                 dismiss()
                 dialogInterface.dismiss()
@@ -27,7 +24,8 @@ class DeleteDialog(
                 dialogInterface.dismiss()
             }
             .setOnDismissListener {
-                dialog = null // optional cleanup
+                dismiss()
+                dialog = null
             }
             .create()
 
