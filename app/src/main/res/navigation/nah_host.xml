@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nah_host"
+    app:startDestination="@id/questionScreen">
+
+    <fragment
+        android:id="@+id/questionScreen"
+        tools:layout="@layout/screen_questions"
+        android:name="uzb.smt.questionsdemo.presenter.screen.questions.QuestionScreen"
+        android:label="QuestionScreen" >
+        <action
+            android:id="@+id/action_questionScreen_to_createQuestionScreen"
+            app:destination="@id/createQuestionScreen"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_questionScreen_to_resultScreen"
+            app:destination="@id/resultScreen"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/createQuestionScreen"
+        tools:layout="@layout/screen_create_question"
+        android:name="uzb.smt.questionsdemo.presenter.screen.create.CreateQuestionScreen"
+        android:label="CreateQuestionScreen" />
+    <fragment
+        android:id="@+id/resultScreen"
+        tools:layout="@layout/screen_result"
+        android:name="uzb.smt.questionsdemo.presenter.screen.results.ResultScreen"
+        android:label="ResultScreen" />
+</navigation>

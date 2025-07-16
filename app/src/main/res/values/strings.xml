@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Questions Demo</string>
+    <string name="enter_answer">Javobni kiriting!</string>
+    <string name="choose">Tanlang</string>
+    <string name="enter_new_options">Yangi variant kiriting</string>
+    <string name="save">Saqlash</string>
+    <string name="enter_question">Savol matnini kiriting</string>
+    <string name="result">Natijalar</string>
+</resources>
