@@ -100,8 +100,13 @@ class QuestionRepositoryImpl @Inject constructor(
         try {
             val entities = questionDao.getAllQuestionsWithOptions()
             if (entities.isEmpty()) {
-                demo.forEach {
-                    insertQuestion(it)
+                demo.forEach { question ->
+                    insertQuestion(question).collect { result ->
+                        when (result) {
+                            is ResponseData.Success -> { /* ... */ }
+                            is ResponseData.Error -> { /* ... */ }
+                        }
+                    }
                 }
                 val new = questionDao.getAllQuestionsWithOptions()
                 val questions = new.map { it.toQuestionData() }

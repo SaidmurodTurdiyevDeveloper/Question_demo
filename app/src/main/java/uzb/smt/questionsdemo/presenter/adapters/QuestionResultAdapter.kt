@@ -168,19 +168,21 @@ class QuestionResultAdapter :
             val iconView = optionView.findViewById<ImageView>(R.id.optionIcon)
 
             textView.text = option.optionText
-            iconView.visibility = View.GONE
+            iconView.visibility = View.VISIBLE
 
             when {
                 option.isCorrect -> {
-                    iconView.visibility = View.VISIBLE
                     iconView.setImageResource(R.drawable.ic_check_filled)
                     iconView.setColorFilter(ContextCompat.getColor(holder.itemView.context, R.color.green))
                 }
 
                 option.isChecked && !option.isCorrect -> {
-                    iconView.visibility = View.VISIBLE
                     iconView.setImageResource(R.drawable.ic_check_filled)
                     iconView.setColorFilter(ContextCompat.getColor(holder.itemView.context, R.color.red))
+                }
+
+                else -> {
+                    iconView.setImageResource(R.drawable.ic_check_outline)
                 }
             }
 
