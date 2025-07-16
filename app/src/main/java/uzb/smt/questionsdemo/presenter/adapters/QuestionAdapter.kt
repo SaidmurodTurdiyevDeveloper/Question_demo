@@ -1,7 +1,8 @@
 package uzb.smt.questionsdemo.presenter.adapters
 
-import android.R
+import android.R as androidR
 import android.annotation.SuppressLint
+import android.content.res.ColorStateList
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
@@ -12,10 +13,12 @@ import android.widget.CheckBox
 import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import uzb.smt.questionsdemo.R
 import uzb.smt.questionsdemo.databinding.ItemCheckResultBinding
 import uzb.smt.questionsdemo.databinding.ItemQuestionBinding
 import uzb.smt.questionsdemo.domen.model.QuestionData
@@ -49,7 +52,7 @@ class QuestionAdapter(
         differ.submitList(newList)
     }
 
-    override fun getItemCount(): Int = differ.currentList.size + 1
+    override fun getItemCount(): Int = if (differ.currentList.isEmpty()) 0 else differ.currentList.size + 1
 
     override fun getItemViewType(position: Int): Int {
         return if (position == differ.currentList.size) VIEW_TYPE_CHECK_BUTTON else VIEW_TYPE_QUESTION
@@ -133,6 +136,9 @@ class QuestionAdapter(
                     topMargin = spacingInPx
                     bottomMargin = if (index != item.options.lastIndex) spacingInPx else 0
                 }
+                buttonTintList = ColorStateList.valueOf(
+                    ContextCompat.getColor(context, R.color.blue)
+                )
             }
             radioGroup.addView(radioButton)
         }
@@ -183,6 +189,9 @@ class QuestionAdapter(
                     topMargin = spacingInPx
                     bottomMargin = if (index != item.options.lastIndex) spacingInPx else 0
                 }
+                buttonTintList = ColorStateList.valueOf(
+                    ContextCompat.getColor(context, R.color.blue)
+                )
             }
 
             checkBox.setOnCheckedChangeListener { _, isChecked ->
@@ -233,7 +242,7 @@ class QuestionAdapter(
 
         val optionList = item.options.map { it.optionText }
 
-        val adapter = ArrayAdapter(context, R.layout.simple_dropdown_item_1line, optionList)
+        val adapter = ArrayAdapter(context, androidR.layout.simple_dropdown_item_1line, optionList)
         dropdownView.setAdapter(adapter)
 
         val selectedOption = item.options.find { it.isChecked }

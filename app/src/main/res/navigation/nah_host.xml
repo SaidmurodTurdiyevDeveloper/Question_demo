@@ -14,16 +14,16 @@
             android:id="@+id/action_questionScreen_to_createQuestionScreen"
             app:destination="@id/createQuestionScreen"
             app:enterAnim="@android:anim/slide_in_left"
-            app:exitAnim="@android:anim/slide_out_right"
+            app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/slide_in_left"
-            app:popExitAnim="@android:anim/slide_out_right" />
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_questionScreen_to_resultScreen"
             app:destination="@id/resultScreen"
             app:enterAnim="@android:anim/slide_in_left"
-            app:exitAnim="@android:anim/slide_out_right"
+            app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/slide_in_left"
-            app:popExitAnim="@android:anim/slide_out_right" />
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/createQuestionScreen"

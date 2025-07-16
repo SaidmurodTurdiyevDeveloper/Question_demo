@@ -88,6 +88,7 @@
             app:boxCornerRadiusBottomStart="10dp"
             app:boxCornerRadiusTopEnd="10dp"
             app:boxCornerRadiusTopStart="10dp"
+            app:hintTextColor="@color/blue"
             app:endIconMode="dropdown_menu"
             app:endIconTint="@color/blue"
             tools:visibility="visible">
