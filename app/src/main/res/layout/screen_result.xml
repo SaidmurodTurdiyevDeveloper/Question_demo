@@ -38,9 +38,10 @@
         android:layout_width="match_parent"
         android:id="@+id/rv"
         android:paddingHorizontal="16dp"
-        android:clipToPadding="true"
+        android:clipToPadding="false"
         android:paddingTop="14dp"
-        tools:itemCount="4"
+        android:paddingBottom="100dp"
+        tools:itemCount="20"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_result"
         android:layout_height="wrap_content"/>
